@@ -541,3 +541,9 @@ The Day 4 authorization/collaboration layer and Day 5 core lifecycle are impleme
 **Scope distinction:** the actionable submission demonstration covers the supported N1 basis correction. Full-return readiness remains blocked. E04–E09 and E11–E24, deeper specialist-area work, general binary uploads, verified production accounts and other disclosed completeness requirements remain unfinished. Existing four catalog groups and the Brightpath positive control are independently computed; no unresolved finding is silently marked fixed by the lifecycle demo.
 
 **Hosting:** the application is live at https://mira-flores-workpaper.vercel.app with core Supabase persistence, independent visitor state, and persistence through one deployment verified. See `workpaper/submission/HOSTED_VALIDATION.md` for tested paths and remaining hosted checks. Local file persistence is development-only; never package `.data/` runtime records or secrets.
+
+## Submission checkpoint — October 18, 2026
+
+The hosted N1 walkthrough now includes adjustment and verification, client conversation, separate reviewer/partner/client package approvals, simulated federal acceptance and California rejection, a frozen parent, and an editable amendment with an independent note. The parent package hash and jurisdiction outcomes remained unchanged. Downloaded exports passed hash and local-link validation; an offline browser rendering check remains outstanding.
+
+The final normal test run passed 95 tests, with five opt-in local HTTP tests skipped. The submission includes a one-page approach, the 24-observation error register with automated coverage distinguished, an AI disclosure, and a spoken transcript aligned to a captured hosted walkthrough. The video uses sampled frames from actual browser interactions, with idle time edited out; its narration format and delivery details are documented in `workpaper/submission/WALKTHROUGH.md`.

@@ -1,38 +1,59 @@
-# Seven-minute live walkthrough script
+# Walkthrough delivery guide
 
-This is a recording script, not a recorded demonstration. Start at the actual application URL; the local preview is `http://localhost:3000`. Replace it with the verified public URL before recording the submitted walkthrough.
+Application: [mira-flores-workpaper.vercel.app](https://mira-flores-workpaper.vercel.app). Speaking draft: [TRANSCRIPT.md](TRANSCRIPT.md). Hosted outcomes and limits: [HOSTED_VALIDATION.md](HOSTED_VALIDATION.md).
 
-A separate 100-second captioned video is available from actual UI screenshots. It has no narration or live interaction and is labeled as a screenshot preview. `submission/WALKTHROUGH.mp4` was rendered with `./scripts/render-walkthrough.sh`; its encoding, decoded duration and representative frames have been checked. The script below remains the plan for the longer narrated live demonstration.
+## Main submission recording
 
-## Prepare before recording
+The main click-through uses sampled frames captured during actual interactions with the hosted application in a fresh demonstration workspace. Idle time is edited out. This is an agent-operated browser demonstration, not a continuous native screen recording. It is silent: Pramod's voice and generated narration are both absent. The separate first-person transcript is provided for Pramod to review, personalize, and speak while presenting or recording a voiceover.
 
-Use a dedicated demonstration workspace. Keep at least one separate browser for a fixed-persona invitation; an unrelated fresh browser should retain its own workspace. Do not show invitation codes or full sensitive identifiers in the recording. Label any previously completed decisions as demonstration preparation. Do not imply that they were performed by real staff or a client.
+The main output is [LIVE_WALKTHROUGH.mp4](LIVE_WALKTHROUGH.mp4), verified at **7 minutes 50 seconds**, 1512×862 pixels, 54,857,940 bytes, and zero audio tracks. Five decoded frames were visually checked for readability. The source manifest is `artifacts/live-capture/manifest.json`, containing 381 frames; all remain in their original order. Twenty-seven long idle gaps were shortened and explicit holds retain actual frames. Capture was sampled at a variable rate; the encoded frame rate does not imply continuous native capture. Do not substitute the older screenshot-tour file for this click-through.
 
-For the later filing scene, use a visibly labeled **prepared N1 lifecycle demonstration**. It requires the actual 19,100 basis adjustment supported by `ev-0066`, a current verification, all review notes resolved, and the separate reviewer/partner/client approvals of the exact frozen package. Full-return readiness remains blocked by unresolved checks and incomplete tax work.
+| Start | Scene |
+|---|---|
+| 0:00 | Introduction |
+| 0:40 | Evidence and packet |
+| 1:07.6 | Findings and positive control |
+| 1:48.8 | N1 printed and supplemental evidence |
+| 2:30.2 | Adjustment and verification |
+| 2:53.1 | Roles and collaboration |
+| 3:42.5 | Versions, replay, and what-ifs |
+| 4:27.3 | Readiness and package freeze |
+| 5:07.4 | Separate approvals |
+| 5:49.9 | Federal/California outcomes |
+| 6:28.0 | Amendment and original record |
+| 7:05.4 | Frozen exports |
+| 7:18.9 | Closing scope and AI disclosure |
 
-## Recording sequence
+The markers can slightly precede the corresponding action. The adjustment and export scenes are short; their transcript passages have been shortened accordingly.
 
-| Time | Navigation and action | What to explain |
-|---|---|---|
-| 0:00–0:35 | Open `/`. Point to household, v3, June 23 simulation date, and workspace identity. | The organizing unit is a claim with evidence and review history. The supplied packet is immutable; today's computer date does not unlock future evidence. |
-| 0:35–1:15 | Open `/findings`; select E01 and follow its source to D62. | Printed `74-3829156` differs from extracted `74-3829516` despite 97% confidence. The finding is derived from evidence. Briefly contrast Brightpath's passing 260-lot control. |
-| 1:15–2:10 | Open `/claim/F1040.7?version=v3`, follow N1, then D28 page 3's `ev-0498` highlight. Return using “Back to claim”; inspect D11 supplemental basis. | Broker basis is blank; extracted/engine zero is not printed proof of zero basis. D11 supports 19,100. Version and originating claim stay attached to navigation. |
-| 2:10–3:10 | On `/claim/F8949.B.N1?version=v3`, save basis 19,100 with reason and `ev-0066`. Record verification. Show working gain 140, original engine gain 19,240, and labeled tax-effect estimate. Use `/collaboration` to change to Daniel for review; return to the claim. Demonstrate a material change/undo reopening approval. | Append-only history preserves the source and every decision. Undo restores the preceding surviving value. A view or unrelated note does not certify evidence or recompute the whole return. |
-| 3:10–4:00 | On `/collaboration`, switch to Marcus (`st-04`), inspect masked evidence, then use a prepared question/client answer in the client persona. Return to the claim's answer-evidence selector. | Permissions apply on the server. Clients answer only addressed questions; attachments remain restricted. Separate browser polling shows shared decisions only after joining the intended workspace. The role switcher is a demo identity mechanism. |
-| 4:00–4:50 | Open `/versions?from=v1&to=v2`, then v2→v3. Open `/replay?at=tl-17`, seek to `tl-22`, and open D71 through its replay evidence link. Briefly show `/scenarios?scenario=hvac_improvement`. | Versions show supplied changes; old adjustments are not silently reapplied. Replay is read-only. D71 is the later Social Security card, while the corrected K-1 belongs to the earlier v3 evidence. Each supplied scenario is tied to original v3 and excludes current working adjustments. |
-| 4:50–6:20 | Open `/filing`. Show an open review note blocking submission and the full-return coverage blocker. Resolve the note in the prepared N1 demo; freeze the package, inspect approval requirements, and show exact-package reviewer/partner/client approval. Simulate acceptance separately for federal/California as desired. Create an amendment branch; compare original snapshot hashes and download its client/notice exports. | A prepared N1 demonstration is not full-return approval. Agency results are simulated. Each attempt is frozen; amendment changes occur in a child branch. Open the notice export offline and follow its noncash-gift and Schedule C receipts links. Evidence and decisions are pinned to the original cutoff. |
-| 6:20–7:00 | Return to `/` and briefly show the submission documents. | State what is complete and what remains: four implemented check groups, broader audit backlog, no full tax recompute, limited text attachments, demonstration identity/e-file. Explain AI assistance and actual validation. Give the verified public URL only if deployment succeeded. |
+## Scenes actually captured
 
-## Navigation notes
+1. **Problem and data:** Overview, the June 23 simulation clock, and the evidence trail.
+2. **Independent checks:** the E01 EIN mismatch in D62 and the Brightpath 260-lot passing control. Implemented catalog coverage remains E01/E02/E03/E10.
+3. **N1 evidence:** D28's printed blank basis, D11/`ev-0066`, basis adjustment 19,100, and fingerprinted verification. Working gain becomes 140 while the engine's 19,240 remains visible.
+4. **Collaboration and roles:** a question as Priya, response as Ngozi, then Marcus's masked D06 document.
+5. **Version and date context:** v2→v3 comparison, June 23 versus July 13 replay with masked D71, and the supplied HVAC scenario against original v3.
+6. **Readiness and approvals:** Priya resolves the client conversation; full-return readiness is blocked; the N1 demonstration package is frozen; Daniel, Helen, and Ngozi approve separately as reviewer, partner, and client.
+7. **Simulated outcomes:** Helen records federal acceptance and California rejection as separate preserved attempts. No real return is transmitted.
+8. **Amendment:** a child branch is created and receives a review note. Returning to the main branch shows the original package hash and both jurisdiction outcomes unchanged. The California rejection remains unresolved.
+9. **Exports and closing:** client and staff evidence HTML are downloaded, followed by Overview and the scope/AI-use conclusion.
 
-- Use the persistent header links for Overview, Findings, Documents, Sales, Assets, Prior year, Collaboration, Versions, Replay, Scenarios, and Filing as available in the build. “Back to claim” is the fastest way to retain context after opening a document.
-- Change persona in **Collaboration**, then navigate back to the relevant screen. The baseline preparer cannot sign their own work. Helen supplies partner approval where required.
-- Replay evidence remains under `/replay/evidence?at=<milestone>&ref=<reference>&page=<page>`; ordinary document routes continue to enforce the working date.
-- The filing screen supplies snapshot-specific download links: `/api/exports/<snapshotId>?kind=client&branch=<branchId>` or `kind=notice`. Clients receive only the summary; staff notice exports include authorized evidence and the frozen manifest.
-- Pause if a save fails or an approval is stale. Show the actual state, reload if appropriate, and avoid narrating a successful transition that did not occur.
+The capture does **not** demonstrate creation of a blocking review note, undo, two-browser invitation collaboration, or an offline browser rendering of the exported HTML. Some of those behaviors have separate automated or hosted checks; consult the validation record instead of describing them as shown in this recording.
 
-After recording, open the video and verify its sound, readable text, length, and public-link access. Save its actual URL in [DEPLOYMENT.md](DEPLOYMENT.md); no upload or external message is part of this script.
+## Preserved package and export meaning
 
-## Generated preview video
+The demonstration package is `snap_75ddcdeb-e71b-4dcb-98ce-0b1ad43a0898`, with content hash `5f3e0d5a930e115d66a6a7081a2e14d3c7486c6dfe6119eb88c4c879886c04bd` and frozen event cutoff **6**. The amendment note belongs to the child branch only.
 
-`WALKTHROUGH.mp4` is a verified 100-second H.264 captioned tour built from five actual local preview screenshots (1600×1000, 24 fps). It has no narration and is not a recording of live clicks. It covers overview, N1 evidence and working values, findings, isolated replay, and the N1 filing simulation. The longer live script above remains available for a personal narrated recording. Regenerate with `scripts/render-walkthrough.sh`; macOS may require permission for the local video encoder.
+The downloaded HTML preserves that freeze cutoff. It includes the pre-freeze workpaper evidence and decisions, **not** the later package approvals or filing attempts. Those later records remain in application history. Full-return readiness remains blocked; acceptance in this video concerns the explicitly bounded N1 simulation.
+
+The exports were downloaded as Helen and are authorized **unmasked** copies containing fictional packet identifiers. They are not examples of Marcus's masked export. Structural validation checked packet/manifest integrity, 72 document hashes, 75 local reference links, no external scripts/assets, and exclusion of D71/D72 from the earlier cutoff. Evidence includes `SchA.12`, `SchC.1`, D15, `ev-1054`, and `ev-0066`. Offline browser rendering was not performed, so no caption or narration should claim an offline visual walkthrough succeeded.
+
+## Speaking and sharing
+
+Use the transcript as a speaking draft, not as a claim that Pramod personally operated the recorded browser. Its DockWise/Pareto Labs connection is restricted to the supplied data-pipeline and tracing experience, with no invented project details or metrics. Check the final scene timestamps, practice at a comfortable pace, and add personal narration only after reviewing the claims.
+
+Share the live application link, final click-through video, one-page approach, error register, and AI disclosure. A locally generated video is not an externally hosted video URL; record the real destination only after upload and access verification.
+
+## Older preview artifact
+
+`WALKTHROUGH.mp4` remains a separate 100-second captioned tour made from five local preview screenshots, at 1600×1000 and 24 fps. It has no narration and shows no live interaction. It is a historical preview, not the main hosted click-through. Its renderer is `scripts/render-walkthrough.sh`.

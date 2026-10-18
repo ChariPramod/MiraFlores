@@ -1,23 +1,29 @@
 # MiraFlores Workpaper — approach
 
-The prototype treats a tax return as a set of claims that a reviewer must be able to support. Each claim connects the supplied engine result, printed source, extracted interpretation, working adjustment, and attributed review decision. The main demonstration follows capital gain into RSU lot N1: the broker leaves basis blank, a supplemental statement supports $19,100, and the reviewed local arithmetic produces a $140 gain while preserving the engine's $19,240 result.
+[Live prototype](https://mira-flores-workpaper.vercel.app) · [Validation record](HOSTED_VALIDATION.md) · [Error register](ERROR_REGISTER.md)
 
-## Evidence before confidence
+I organized the prototype around reviewable claims so a reviewer can explain a return value and inspect decisions that changed it. Each claim connects engine results, calculations, printed evidence, extracted interpretations, and review history. Navigation preserves evidence links and return version.
 
-The original packet remains byte-for-byte unchanged: 74 documents, 199 pages, 3,012 extracted values, and three return versions. Its SHA-256 is verified at load time. Typed reference resolution and field-specific printed anchors make the source inspectable in both directions. Independent rules detect the EIN transcription error, omitted RSU basis, duplicate interest, and missing sale M18; Brightpath's 260 lots provide a passing control. The broader audit register is disclosed separately from implemented checks.
+The main example is RSU lot N1. Its broker statement leaves basis unreported, but the engine uses zero and reports a $19,240 gain. A supplemental statement supports $19,100 basis. Recording that support produces a $140 working gain while retaining the original result. Printed evidence, extracted values, working decisions, and estimated tax effects remain visibly separate.
 
-## Decisions with history
+## Data and implementation
 
-Next.js and TypeScript provide the server-rendered application and command boundary. Validated commands append attributed events; deterministic projections derive current state. Expected revisions reject stale changes, idempotency keys protect retries, and bulk commands commit together. Undo appends compensation and restores the preceding surviving decision. Verification and approvals use material fingerprints so affected approvals reopen after a change.
+The original packet is unchanged: 74 documents, 199 pages, 3,012 extractions, and three return versions. A SHA-256 check protects its bytes. Server-side indexes resolve references and locate printed fields; the raw packet never goes to the browser. Next.js and TypeScript handle validated server commands and decimal arithmetic.
 
-Supabase PostgreSQL is the intended hosted event store. A local file store supports development; it is prohibited on Vercel. Signed workspace capabilities isolate visitors and permit fixed-persona invitations. Server-side permissions, redaction, and separate sensitive-view audit logs protect delivered data. The role switcher demonstrates authorization behavior; it is not a production identity system.
+Supabase PostgreSQL stores append-only events. Current state combines those events with the immutable packet. Expected revisions reject stale changes, idempotency keys protect retries, and bulk operations commit atomically. Undo adds compensation and restores the previous surviving decision. Material fingerprints bind verification and approvals to what was reviewed, so relevant changes reopen them.
 
-## Bounded calculations and lifecycle
+Signed workspace sessions isolate visitors and support fixed-persona invitations. Server authorization, sensitive-field redaction, and separate access logs govern delivered content. The persona selector demonstrates role behavior; it does not provide production identity verification.
 
-Supported local arithmetic is recalculated with decimal values. Tax effects are labeled estimates using supplied rates, not a rebuilt tax engine. Version comparison preserves the supplied v1/v2/v3 results. The five supplied scenarios each retain their original v3 baseline; they cannot be combined into a supposedly exact return. Replay is a read-only, date-gated view, separate from the working branch.
+## Evidence and review scope
 
-The implemented local Day 5 workflow is a simulation. Snapshot-specific reviewer, partner, and client approvals gate the prepared N1 demonstration; frozen attempts and child branches preserve records through rejection or amendment. Full-return readiness stays blocked by unresolved checks and incomplete tax work. Client-summary and staff-evidence HTML exports retain their frozen cutoff, evidence references, integrity manifest, and limitations, and work without external scripts or network resources.
+Independent checks implement four catalog groups: EIN transcription mismatch, omitted supplemental RSU basis, duplicate interest, and missing sale M18. Brightpath's 260 lots provide a passing control. The broader register separates 18 audit-confirmed discrepancies from six suspected or judgment-dependent items. Those audit observations are not all automated checks or completed resolutions.
 
-## Submission boundaries
+Local arithmetic is recalculated where supported. Tax effects use supplied rates and remain labeled estimates; the application does not rebuild the tax engine. Each supplied what-if retains its original v3 baseline. Version comparison preserves supplied results, and read-only replay gates evidence by its availability date without overwriting the working draft.
 
-The code and automated tests are assisted by AI; see [AI disclosure](AI_DISCLOSURE.md). Only four error-catalog groups currently have implemented checks. General binary uploads/private object storage, broader tax-domain coverage, and production identity remain incomplete. No real filing or legally effective signature is performed. Public deployment, live Supabase validation, and a final narrated walkthrough remain release tasks. A verified 100-second captioned screenshot tour is included as `WALKTHROUGH.mp4`; it has no narration or live clicks. See [DEPLOYMENT.md](DEPLOYMENT.md).
+## Filing, deployment, and limitations
+
+The prepared N1 lifecycle requires review, partner, and exact-summary client approval. Open review notes block submission. Simulated attempts preserve a snapshot and freeze the branch; successors and amendments inherit the frozen record without changing the parent. Self-contained client and staff HTML exports retain evidence references, hashes, and the freeze cutoff; later approvals and attempts remain in application history. Full-return readiness remains blocked by unfinished tax work.
+
+The application is live on Vercel with Supabase. Hosted checks cover persistence, sign-off/undo, visitor isolation, separate package approvals, simulated federal acceptance and California rejection, an amendment with a child-only note, and an unchanged parent snapshot. Export hashes and local-link closure were structurally validated; offline browser rendering was not performed. See the validation record for remaining limits.
+
+Broader tax checks, rental/partnership depth, production identity, and general binary uploads remain incomplete. No real filing or legally effective signature occurs. [AI_DISCLOSURE.md](AI_DISCLOSURE.md) explains AI assistance and the limits of the validation evidence.

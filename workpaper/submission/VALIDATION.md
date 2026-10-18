@@ -1,4 +1,6 @@
-# Local validation — October 17, 2026
+# Local validation — October 17–18, 2026
+
+Final normal-suite run on October 18: **95 passed, 5 opt-in HTTP tests skipped**, across 19 test files. This includes the four fresh-session sensitive-access audit regression tests. No application code changed after this run; subsequent changes were submission documents and media tooling. Hosted filing/amendment and downloaded-export results are recorded separately in [HOSTED_VALIDATION.md](HOSTED_VALIDATION.md).
 
 Publication check after adding Supabase secret-key support:
 
@@ -32,4 +34,4 @@ Version/replay checks covered 63/89 computed version changes, historical D71 ava
 
 `WALKTHROUGH.mp4`: 100 seconds, H.264, 1600×1000, 24 fps. Encoded file was decoded and representative first/final frames visually inspected. This is a captioned screenshot tour, not live interaction or narration.
 
-Not validated: live Supabase migrations/RPCs, Vercel deployment, shared hosted sessions across redeployments, production identity, or real tax calculation/filing. Full-return readiness remains intentionally blocked; the working lifecycle demonstration is scoped to N1.
+The earlier local run did not validate hosting. Subsequent hosted checks exercised Supabase event writes, package approvals, simulated filing, amendment creation, and exports on Vercel; see [HOSTED_VALIDATION.md](HOSTED_VALIDATION.md). Shared hosted sessions/concurrent writes, production identity, and real tax calculation/filing remain unvalidated or outside scope. Full-return readiness remains intentionally blocked; the working lifecycle demonstration is scoped to N1.

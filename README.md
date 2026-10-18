@@ -4,6 +4,8 @@ A Next.js and TypeScript prototype for reviewing the supplied Okafor–Lindqvist
 
 The application is in [`workpaper/`](workpaper/). See the [application README](workpaper/README.md) for navigation and implementation details, the [project plan](PLAN.md), and the [approach and limitations](workpaper/submission/APPROACH.md).
 
+The [submission package index](workpaper/submission/SUBMISSION.md) links the one-page approach, error register, spoken walkthrough transcript, AI disclosure, and validation records.
+
 ## Run locally
 
 ```sh

@@ -95,7 +95,7 @@ Apply Supabase migrations `001`, `002`, `003`, and `004` in order. They add the 
 access log, enforce immutable history, and serialize compare-and-append inside
 PostgreSQL. The server uses the service role; browser/anon access has no policies.
 The RPC must be deployed before running this application against Supabase.
-Live Supabase migrations and RPC behavior remain unvalidated.
+The hosted walkthrough exercises Supabase event writes, approvals, frozen filing branches, amendments, and exports. Concurrent hosted writes and database policy inspection remain separate checks; see [hosted validation](submission/HOSTED_VALIDATION.md).
 
 Set `WORKSPACE_SESSION_SECRET` to a persistent random secret of at least 32 bytes
 on Vercel. Locally an ignored `.data/session-secret` is created. Keep that file
@@ -138,7 +138,7 @@ a hosted or Supabase-backed workspace.
 ## Submission materials
 
 See `submission/APPROACH.md`, `ERROR_REGISTER.md`, `AI_DISCLOSURE.md`,
-`WALKTHROUGH.md`, and `DEPLOYMENT.md`. They distinguish implemented behavior
+`TRANSCRIPT.md`, `WALKTHROUGH.md`, and `DEPLOYMENT.md`. They distinguish implemented behavior
 from remaining requirements. The live URL and bounded hosted checks are recorded in `submission/HOSTED_VALIDATION.md`.
 
-A local `submission/WALKTHROUGH.mp4` was generated as a 100-second captioned tour of actual preview screenshots. Generated videos and screenshots are excluded from this repository. `submission/WALKTHROUGH.md` provides the longer live recording script.
+A local `submission/LIVE_WALKTHROUGH.mp4` contains sampled frames captured during the actual hosted walkthrough, with waiting time edited out. It is silent; `submission/TRANSCRIPT.md` supplies the spoken walkthrough. The older `submission/WALKTHROUGH.mp4` is a separate 100-second captioned screenshot tour. Generated videos and screenshots are excluded from this repository; see `submission/WALKTHROUGH.md` for delivery details.
