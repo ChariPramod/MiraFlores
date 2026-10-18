@@ -4,6 +4,7 @@ import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import type { WorkspaceSession } from '@/lib/workspace/session';
 import { createSupabaseAdmin, isSupabaseConfigured } from '@/lib/persistence/supabase-store';
+import { getEventStore } from '@/lib/persistence/get-store';
 import { containsSensitive, redact } from './redaction';
 import { persona } from './policy';
 
@@ -12,6 +13,8 @@ export async function deliver<T>(session: WorkspaceSession, resource: string, dt
   if (persona(session.personaId)?.cleared && containsSensitive(dto)) {
     const row = { id: randomUUID(), workspace_id: session.workspaceId, actor_id: session.personaId, resource, recorded_at: new Date().toISOString() };
     if (isSupabaseConfigured()) {
+      // A direct document visit can precede any event-backed page in this session.
+      await getEventStore().ensureWorkspace(session.workspaceId);
       const { error } = await createSupabaseAdmin().from('sensitive_access_log').insert(row);
       if (error) throw new Error('Cannot deliver unmasked data: access audit failed');
     } else {

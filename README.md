@@ -37,7 +37,7 @@ Apply all four SQL files under [`workpaper/supabase/migrations/`](workpaper/supa
 
 Use [`workpaper/.env.example`](workpaper/.env.example) as the local template and save actual values only in an ignored `.env.local`. Publishable keys and JWKS URLs are not administrative credentials and are not required by this application. Vercel requires Supabase; the local-file fallback is development-only.
 
-See the [deployment checklist](workpaper/submission/DEPLOYMENT.md) for migrations and hosted verification. A public application URL and live Supabase validation are still pending.
+See the [deployment checklist](workpaper/submission/DEPLOYMENT.md) for migrations and hosted verification. The app is live at https://mira-flores-workpaper.vercel.app. Core Supabase persistence and review checks passed; see the [hosted validation record](workpaper/submission/HOSTED_VALIDATION.md) for the tested scope and remaining checks.
 
 ## Prototype scope
 

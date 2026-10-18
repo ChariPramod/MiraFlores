@@ -5,7 +5,7 @@ Evidence-first tax workpaper for the Okafor–Lindqvist 2025 packet. See root [`
 ## Status
 
 - **Local:** `npm run dev` → http://localhost:3000
-- **Public deployment:** a public application URL and live Supabase validation are pending. Use the Vercel setup below after importing the source repository.
+- **Public deployment:** https://mira-flores-workpaper.vercel.app. See [hosted validation](submission/HOSTED_VALIDATION.md) for observed results and remaining release checks.
 - **Packet packaging:** `data/okafor_lindqvist_2025_packet.json` is a real file (1,943,262 bytes, SHA-256 `ee01f850…`), not a parent-folder symlink.
 - **Persistence:** append-only events in Supabase when `SUPABASE_URL` + `SUPABASE_SECRET_KEY` are set (legacy `SUPABASE_SERVICE_ROLE_KEY` is also supported); otherwise durable local `.data/workspaces/` (gitignored). Visitor workspaces stay isolated server-side through signed session cookies.
 - **Demo data:** the supplied packet explicitly identifies all people, companies, identifiers, and financial data as fictional.
@@ -139,6 +139,6 @@ a hosted or Supabase-backed workspace.
 
 See `submission/APPROACH.md`, `ERROR_REGISTER.md`, `AI_DISCLOSURE.md`,
 `WALKTHROUGH.md`, and `DEPLOYMENT.md`. They distinguish implemented behavior
-from remaining requirements. No public URL or live Supabase validation is claimed.
+from remaining requirements. The live URL and bounded hosted checks are recorded in `submission/HOSTED_VALIDATION.md`.
 
 A local `submission/WALKTHROUGH.mp4` was generated as a 100-second captioned tour of actual preview screenshots. Generated videos and screenshots are excluded from this repository. `submission/WALKTHROUGH.md` provides the longer live recording script.
