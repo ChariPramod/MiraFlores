@@ -56,8 +56,8 @@ npm run dev
 ## Remaining work
 
 Broader checks beyond E01/E02/E03/E10, deeper books-to-tax/rental/K-1 work,
-full-return recomputation, production identity, private binary uploads, and public
-deployment remain open. The implemented filing lifecycle is deliberately an N1
+full-return recomputation, production identity, private binary uploads, and the
+remaining hosted acceptance checks remain open. The implemented filing lifecycle is deliberately an N1
 demonstration; full-return submission remains blocked.
 
 ## Day 4: people and permissions

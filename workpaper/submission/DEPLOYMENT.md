@@ -1,6 +1,6 @@
 # Deployment and release record
 
-**Current external status:** no public application URL or verified live Supabase environment has been recorded. The source repository is intended for import into Vercel as `ChariPramod/MiraFlores`. These instructions describe release requirements; they are not evidence that deployment succeeded. A 100-second captioned screenshot tour was generated locally as `WALKTHROUGH.mp4`; encoding, decoding and representative frames have been verified. Generated videos are excluded from the source repository. It is separate from the planned five-to-eight-minute narrated live walkthrough.
+**Current external status:** the application is live at https://mira-flores-workpaper.vercel.app. Core hosted Supabase reads/writes, adjustment reload persistence, sign-off/undo, prepared packages, fresh-visitor isolation, and persistence through a deployment have been checked. The direct-document initialization bug was fixed and verified on deployed revision `2738006`. See [HOSTED_VALIDATION.md](HOSTED_VALIDATION.md) for evidence and limits. Generated videos remain local; the 100-second captioned screenshot tour is separate from the planned narrated live walkthrough.
 
 **Implemented locally:** version comparison, read-only replay, baseline-bound scenarios, prepared N1 filing gates, immutable simulated attempts, successor/amendment branches, and role-filtered offline HTML exports. Full-return filing remains blocked. Local automated validation is not a substitute for the hosted checks below.
 
@@ -64,14 +64,14 @@ Before submission, replace the pending entries with actual outcomes:
 
 | Evidence | Status |
 |---|---|
-| Public application URL | Pending |
-| Deployed source revision | Pending |
-| Supabase migrations and live RPC validation | Pending |
-| Fresh-browser / shared-workspace / redeploy check | Pending |
+| Public application URL | https://mira-flores-workpaper.vercel.app |
+| Deployed source revision | `2738006` verified; later documentation-only commits may follow |
+| Supabase migrations and live RPC validation | Core event append and sensitive audit paths pass; full filing/branch RPC cycle pending |
+| Fresh-browser / shared-workspace / redeploy check | Independent fresh visitors and one redeploy passed; shared invitation check pending |
 | Offline export check on the deployed build | Pending |
 | Short captioned screenshot-preview video | Generated locally: `WALKTHROUGH.mp4` · 100 seconds; not committed |
 | Five-to-eight-minute recording URL | Pending |
 
 Link [APPROACH.md](APPROACH.md), [ERROR_REGISTER.md](ERROR_REGISTER.md), and [AI_DISCLOSURE.md](AI_DISCLOSURE.md) with the application and recording. Keep the implemented-versus-backlog distinction in the final submission.
 
-The captioned screenshot preview is retained locally at `submission/WALKTHROUGH.mp4`; it is not a narrated live-action recording. Vercel import/environment setup, remote migration execution, and the hosted smoke test remain pending.
+The captioned screenshot preview is retained locally at `submission/WALKTHROUGH.mp4`; it is not a narrated live-action recording. Vercel setup and the core hosted smoke test are complete. The remaining hosted release checks above are still pending.
