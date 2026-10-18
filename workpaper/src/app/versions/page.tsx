@@ -1,0 +1,27 @@
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { AppShell } from '@/components/AppShell';
+import { getWorkpaperSession } from '@/lib/workspace/session';
+import { getPersonaLabel } from '@/lib/workspace/staff';
+import { deliver } from '@/lib/security/delivery';
+import { loadProjection } from '@/lib/events/service';
+import { compareVersions, displayValue } from '@/lib/replay/projections';
+import { claimHrefRequired } from '@/lib/navigation/href';
+import { formatMoney } from '@/lib/format/money';
+
+export default async function VersionsPage({ searchParams }: { searchParams: Promise<{ from?: string; to?: string }> }) {
+  const session = await getWorkpaperSession();
+  const { from = 'v2', to = 'v3' } = await searchParams;
+  const state = await loadProjection(session.workspaceId, session.branchId);
+  const projection = compareVersions(from, to, Object.values(state.adjustments));
+  if (!projection) notFound();
+  const comparison = await deliver(session, `versions:${from}:${to}`, projection);
+  return <AppShell workspaceId={session.workspaceId} personaId={session.personaId} personaName={getPersonaLabel(session.personaId)} version={session.version} simulationDate={session.simulationDate} branchLabel="Version comparison (read-only)">
+    <header className="mb-6 space-y-2"><p className="text-[11px] uppercase tracking-[0.16em] text-ink-muted">Supplied engine versions</p><h1 className="font-serif text-3xl">What changed between returns?</h1><p className="max-w-3xl text-sm text-ink-muted">Compare immutable supplied outputs. Selecting versions does not switch the working draft or carry adjustments forward. Claim links open the corresponding version’s evidence trail.</p></header>
+    <form className="mb-6 flex flex-wrap items-end gap-3 rounded border border-line bg-panel p-4" method="get"><label className="flex flex-col gap-1 text-sm">From<select name="from" defaultValue={from} className="rounded border border-line bg-paper p-2">{['v1','v2','v3'].map(v => <option key={v}>{v}</option>)}</select></label><label className="flex flex-col gap-1 text-sm">To<select name="to" defaultValue={to} className="rounded border border-line bg-paper p-2">{['v1','v2','v3'].map(v => <option key={v}>{v}</option>)}</select></label><button className="rounded bg-accent px-4 py-2 text-sm text-white">Compare</button><Link className="ml-auto text-sm" href="/replay">Open timeline replay</Link></form>
+    <div className="mb-6 grid gap-4 sm:grid-cols-2">{[comparison.from, comparison.to].map((v,i) => <section key={i} className="rounded border border-line bg-panel p-4"><h2 className="font-serif text-xl">{v.id} · {v.at.slice(0,10)}</h2><p className="my-2 text-sm text-ink-muted">{v.trigger}</p><p className="text-sm">Federal total tax ${formatMoney(v.summary.federal.total_tax)} · CA total tax ${formatMoney(v.summary.california.total_tax)}</p></section>)}</div>
+    <div className="mb-6 rounded border border-line bg-panel p-4 text-sm"><strong>{comparison.rows.length} line values changed</strong>{comparison.declaredChangeCount !== null && <> · Packet declares {comparison.declaredChangeCount}: {comparison.declaredChangeCount === comparison.rows.length ? 'count agrees' : 'count discrepancy'}</>}<p className="mt-2">Newly used documents: {comparison.addedDocuments.join(', ') || 'none'}. Superseded in {to}: {comparison.supersededDocuments.join(', ') || 'none'}.</p><p className="mt-1 text-xs text-ink-muted">Changes are calculated from actual values, including added and removed lines. Ratio values retain their precision; blank and missing values are not treated as zero.</p></div>
+    <section className="mb-6 rounded border border-warn/30 bg-warn-soft p-4"><h2 className="font-serif text-xl">Working adjustment overlap review</h2><p className="mt-2 text-sm">{comparison.overlaps.length ? `There are ${comparison.overlaps.length} active ${from} adjustments in your workspace.` : `There are no active ${from} adjustments in your workspace.`} Nothing is reapplied automatically. Existing sign-offs remain scoped to their original version and fingerprint.</p>{comparison.overlaps.map(a => <div key={a.eventId} className="mt-3 border-t border-line pt-3 text-sm"><strong>{a.claimKey} · {a.conflict ? 'overlap conflict' : 'review required'}</strong><p>{a.message}</p><p className="text-ink-muted">Supported value {displayValue(a.supportedValue)} · {a.reason}</p></div>)}</section>
+    <div className="overflow-auto rounded border border-line bg-panel"><table className="w-full text-left text-sm"><thead className="bg-paper-deep text-xs uppercase text-ink-muted"><tr><th className="p-3">Line</th><th className="p-3">Change</th><th className="p-3">{from}</th><th className="p-3">{to}</th><th className="p-3">Difference</th></tr></thead><tbody>{comparison.rows.map(r => <tr key={r.key} className="border-t border-line"><td className="p-3"><span className="font-mono">{r.key}</span><p className="text-xs text-ink-muted">{r.label}</p></td><td className="p-3 text-xs">{r.kind}</td><td className="p-3 font-mono">{r.beforePresent ? <Link href={claimHrefRequired(r.key,from)}>{displayValue(r.old)}</Link> : '— (absent)'}</td><td className="p-3 font-mono">{r.afterPresent ? <Link href={claimHrefRequired(r.key,to)}>{displayValue(r.new)}</Link> : '— (absent)'}</td><td className="p-3 font-mono">{displayValue(r.delta)}</td></tr>)}</tbody></table>{comparison.rows.length === 0 && <p className="p-4 text-sm text-ink-muted">No value changes.</p>}</div>
+  </AppShell>;
+}

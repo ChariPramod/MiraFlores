@@ -1,0 +1,17 @@
+# Local assessment inputs; the application packages the immutable packet once.
+/okafor_lindqvist_2025_packet.json
+/Case_Study_Redesign_the_Tax_Workpaper*.pdf
+
+# Local configuration and credentials
+.env*
+!.env.example
+*.pem
+*.key
+.DS_Store
+.codex/
+.agents/
+.aws/
+.vercel/
+
+# Preserve original scaffold Git metadata locally.
+.local-git-backups/

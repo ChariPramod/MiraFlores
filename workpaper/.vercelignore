@@ -1,0 +1,5 @@
+.data/
+.env*.local
+artifacts/
+submission/*.mp4
+submission/.walkthrough*
